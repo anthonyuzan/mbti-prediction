@@ -8,13 +8,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/hello/<name>')
-def hello(name):
-    return render_template('hello.html', name=name)
-
 @app.route('/predict', methods=['POST'])
 def predict():
-    req_data = request.get_json()['sentence']
+    req_data = request.get_json()['sentences']
     data_preprocessed = data_preprocessing(req_data)
     data_vector = data_vectorization(data_preprocessed, vectorizer)
     prediction = mbti_prediction(data_vector, model_ie, model_sn, model_tf, model_jp)

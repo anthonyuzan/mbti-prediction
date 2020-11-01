@@ -24,13 +24,3 @@ def mbti_prediction(data, model_ie, model_sn, model_tf, model_jp):
     result_tf = model_tf.predict(data)
     result_jp = model_jp.predict(data)
     return f'{result_ie[0]}{result_sn[0]}{result_tf[0]}{result_jp[0]}'
-
-
-# if __name__ == '__main__':
-#     data = "Hello Boys !"
-#     new_d = data_preprocessing(data)
-#     print(new_d)
-#     d_v = data_vectorization(new_d, vectorizer)
-#     print(d_v)
-#     pred = mbti_prediction(d_v, model_ie, model_sn, model_tf, model_jp)
-#     print(pred)

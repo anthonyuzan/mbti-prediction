@@ -1,12 +1,48 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="/static/style.css" />
+    <title>MBTI Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>My website</h1>
-    <a href="/hello/Tony">Click</a>
+    <h1>MBTI Prediction</h1>
+    
+    <div class="container">
+        <h4>Write sentences about your personality</h4>
+        <div class="input-group mb-3">
+            <input type="text" id="sentences" class="form-control" placeholder="...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" onclick="sendJSON()">Predict</button>
+            </div>
+        </div>
+        <p>Your MBTI type: </p>
+        <p id="result"></p>
+    <div>
+
+    <script>
+        function sendJSON(){
+            let sentences = document.querySelector('#sentences')
+            let result = document.querySelector('#result')
+
+            let xhr = new XMLHttpRequest();
+            let url = 'http://127.0.0.1:5000/predict'
+
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 && xhr.status === 200) {
+                    result.innerHTML = this.responseText;
+                }
+            };
+
+            let data = JSON.stringify({"sentences": sentences.value});
+            xhr.send(data)
+        }
+    </script>
+
 </body>
 
 </html>
