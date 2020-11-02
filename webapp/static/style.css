@@ -1,4 +1,35 @@
 body {
-    background: grey;
-    color: orange;
+    background: rgb(45, 45, 45);
+}
+
+h1 {
+    margin-top: 250px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-weight:bold;
+    color: whitesmoke;
+}
+
+#subtitle {
+    margin-bottom: 30px;
+    color: whitesmoke;
+}
+
+.res-section {
+    text-align: center;
+    background: rgb(255, 193, 7);
+}
+
+.btn {
+    font-weight:bold;
+}
+
+
+
+textarea {
+    resize: none;
+}
+
+#result {
+    font-weight:bold;
 }

@@ -4,27 +4,44 @@
     <title>MBTI Prediction</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
-    <h1>MBTI Prediction</h1>
+    <h1>Find out your MBTI type</h1>
     
     <div class="container">
-        <h4>Write sentences about your personality</h4>
-        <div class="input-group mb-3">
-            <input type="text" id="sentences" class="form-control" placeholder="...">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" onclick="sendJSON()">Predict</button>
+        <h4 id="subtitle">Describe yourself (the more you write, the more accurate the prediction will be)</h4>
+        <form action="javascript:sendJSON()">
+            <div class="input-group mb-3 input-zone">
+                <textarea 
+                    id="sentences" 
+                    class="form-control" 
+                    rows="5" 
+                    placeholder="..." 
+                    required
+                    oninvalid="this.setCustomValidity('Please, write something')"
+                    oninput="setCustomValidity('')"
+                ></textarea>
+                <div class="input-group-append">
+                    <button class="btn btn-warning">Predict</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="collapse">
+            <div class="card card-body res-section">
+                <h4>Hmmmm ... I think you are ...</h4>
+                <h4 id="result"></h4>
             </div>
         </div>
-        <p>Your MBTI type: </p>
-        <p id="result"></p>
+
     <div>
 
     <script>
         function sendJSON(){
             let sentences = document.querySelector('#sentences')
-            let result = document.querySelector('#result')
+            let result = document.getElementById('result')
 
             let xhr = new XMLHttpRequest();
             let url = 'http://127.0.0.1:5000/predict'
@@ -40,9 +57,13 @@
 
             let data = JSON.stringify({"sentences": sentences.value});
             xhr.send(data)
+
+            $('.collapse').collapse('show')
         }
     </script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    
 </body>
 
 </html>
