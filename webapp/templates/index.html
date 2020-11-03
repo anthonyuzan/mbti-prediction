@@ -9,7 +9,7 @@
 
 <body>
     <h1>Find out your MBTI type</h1>
-    
+
     <div class="container">
         <h4 id="subtitle">Describe yourself (the more you write, the more accurate the prediction will be)</h4>
         <form action="javascript:sendJSON()">
@@ -31,27 +31,32 @@
 
         <div class="collapse">
             <div class="card card-body res-section">
-                <h4>Hmmmm ... I think you are ...</h4>
                 <div class="container">
+                    <div class="row justify-content-end">
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-dark" 
+                            id="close-btn" 
+                            onclick="closeResult()"
+                        >X</button>
+                    </div>
+                    <h4>Hmmmm ... I think you are ...</h4>
                     <div class="row justify-content-center">
                         <h4 id="result"></h4>
                         <button 
                             type="button" 
                             class="btn btn-dark" 
-                            id="info-btn" 
+                            id="info-btn"
                             onclick="window.open('https://www.16personalities.com/personality-types')"
-                        >
-                            info
-                        </button>
+                        >info</button>
                     </div>
                 </div>
-                
             </div>
         </div>
     <div>
 
     <script>
-        function sendJSON(){
+        function sendJSON() {
             let sentences = document.querySelector('#sentences')
             let result = document.getElementById('result')
 
@@ -62,20 +67,29 @@
             xhr.setRequestHeader('Content-Type', 'application/json');
 
             xhr.onreadystatechange = function () {
-                if(xhr.readyState === 4 && xhr.status === 200) {
+                if (xhr.readyState === 4 && xhr.status === 200) {
                     result.innerHTML = this.responseText;
                 }
             };
 
-            let data = JSON.stringify({"sentences": sentences.value});
+            let data = JSON.stringify({ "sentences": sentences.value });
             xhr.send(data)
 
             $('.collapse').collapse('show')
         }
+
+        function closeResult() {
+            $('.collapse').collapse('hide');
+        }
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
-    
+    <script 
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script 
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
