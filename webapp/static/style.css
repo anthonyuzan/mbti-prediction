@@ -10,9 +10,8 @@ h1 {
     color: whitesmoke;
 }
 
-#subtitle {
-    margin-bottom: 30px;
-    color: whitesmoke;
+textarea {
+    resize: none;
 }
 
 .res-section {
@@ -24,12 +23,17 @@ h1 {
     font-weight:bold;
 }
 
-
-
-textarea {
-    resize: none;
+#subtitle {
+    margin-bottom: 30px;
+    color: whitesmoke;
 }
 
 #result {
     font-weight:bold;
+    margin-right: 7px;
+}
+
+#info-btn {
+    font-size: 11px;
+    background: rgb(45, 45, 45);
 }
