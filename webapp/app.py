@@ -22,4 +22,4 @@ if __name__ == '__main__':
     model_sn = load('../models/model_sn.joblib')
     model_tf = load('../models/model_tf.joblib')
     model_jp = load('../models/model_jp.joblib')
-    app.run(debug=True, port=5000)
+    app.run(port=5000)
