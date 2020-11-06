@@ -4,7 +4,7 @@
 
 ## :dart: Objective
 
-Predict the user's MBTI profile from a few sentences defining it.
+Machine Learning app which is able to identify a person's MBTI profile from a few sentences defining it.
 
 The **Myers–Briggs Type Indicator (MBTI)** is an introspective self-report questionnaire indicating differing psychological preferences in how people perceive the world and make decisions. The test attempts to assign four categories:
 - introversion (I) or extraversion (E),
@@ -18,7 +18,7 @@ One letter from each category is taken to produce a four-letter test result, lik
 
 ## :black_nib: Description
 
-Once the web application is launched, the user should write the largest description of himself. After that, the user clicks on the "Predict" button and the models return the user MBTI profile.
+Once the web app is launched, the user is invited to describe him/herself in a few sentences. The user then clicks on the "Predict" button and his MBTI profile is determined and displayed.
 
 ## :rocket: How to start the application?
 
@@ -43,5 +43,5 @@ Available notebooks:
 
 ## :eyes: Overview
 
-
+![wep app](sample.gif)
 
